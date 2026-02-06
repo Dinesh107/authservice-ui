@@ -15,10 +15,21 @@ export const login = async (user) => {
   return response;
 };
 
+// export const getHome = () => {
+//   const token = localStorage.getItem("token");
+
+//   return axios.get("http://localhost:8081/api/home", {
+//     headers: {
+//       Authorization: `Bearer ${token}`,
+//     },
+//   });
+// };
+
+
+// const API_URL = "http://localhost:8081/api";
 export const getHome = () => {
   const token = localStorage.getItem("token");
-
-  return axios.get("http://localhost:8081/api/home", {
+  return axios.get(`${API_URL}/home`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

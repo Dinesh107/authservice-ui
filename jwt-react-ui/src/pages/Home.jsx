@@ -6,8 +6,12 @@ function Home() {
 
   useEffect(() => {
     getHome()
-      .then((res) => setMessage(res.data))
-      .catch(() => alert("Unauthorized"));
+      .then((res) => {
+        setMessage(res.data); // <-- THIS WAS MISSING / WRONG
+      })
+      .catch(() => {
+        setMessage("Unauthorized");
+      });
   }, []);
 
   return (

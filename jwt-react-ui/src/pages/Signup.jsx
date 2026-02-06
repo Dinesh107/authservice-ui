@@ -8,10 +8,14 @@ function Signup() {
   const navigate = useNavigate();
 
   const handleSignup = async () => {
+  try {
     await signup({ username, password });
     alert("Signup successful");
-    navigate("/login");
-  };
+  } catch (error) {
+    alert(error.response.data);
+  }
+};
+
 
   return (
     <div>

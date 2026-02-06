@@ -7,16 +7,17 @@ function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    try {
-      await login({ username, password });
+ const handleLogin = async () => {
+  try {
+    const res = await login({ username, password });
+    localStorage.setItem("token", res.data.token);
+    navigate("/home");
+  } catch (error) {
+    alert(error.response.data);
+  }
+};
 
-      // ✅ AFTER LOGIN → GO HOME
-      navigate("/home");
-    } catch (error) {
-      alert("Invalid credentials");
-    }
-  };
+
 
   return (
     <div>
